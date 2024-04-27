@@ -1,0 +1,376 @@
+/******* Change Box Model ***************/
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+*{
+  font-family: 'Arial';
+}
+
+/* Layout */
+
+/* Header */
+#top-header{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 2fr;
+
+}
+.siteName{
+  grid-row: 2/3;
+  grid-column: 1/3;
+  font-size: 30px;
+}
+
+#acct-btn{
+  grid-column: 4/5;
+  grid-row: 2/3;
+  text-align: right;
+}
+
+#acct-btn a:hover{
+  background-color: #365486;
+  color: #ffffff;
+  padding: 2px;
+}
+
+.siteName a{
+  font-weight: bold;
+}
+
+.siteName a, #acct-btn a{
+  text-decoration: none;
+  color: #365486;
+}
+
+/* Navigation */
+nav{
+  background-color: #365486;
+}
+
+nav ul{
+  margin: 0;
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: repeat(14, 1fr);
+  grid-template-rows: 1fr;
+  padding: 0.5rem;
+  grid-gap: 5px;
+  
+}
+
+nav ul li a:link{
+  text-decoration: none;
+}
+
+nav ul li a{
+  display: block;
+  padding: .5rem 0;
+  text-decoration: none;
+  font-size: .9rem;
+  text-align: center;
+  color: white;
+}
+
+nav ul li a:hover{
+  background-color: white;
+  color: #365486;
+}
+
+
+
+/* Body */
+
+.content{
+  max-width: 405px;
+  margin: auto;
+}
+#homeTitle{
+  font-size: 1.5rem;
+}
+
+section.hero{
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  max-width: 450px;
+  margin: auto;
+}
+
+section.hero div.hero-image{
+  grid-column: 1/4;
+  grid-row: 1/5;
+}
+
+section.hero div.hero-image picture.heroImage img{
+  width: 100%;
+}
+
+#hero-content-wrapper{
+  background-color: #dcf2f1b5;
+  grid-column: 1/2;
+  grid-row: 1/3;
+  width: fit-content;
+}
+
+div.hero-btn{
+  margin: auto;
+  font-size: 1.5rem;
+}
+
+div.hero-btn button{
+  background: #365486;
+  color: whitesmoke;
+  border-radius: 5px;
+  font-size: 1em;
+  padding: 10px;
+}
+
+div.hero-header h2, div.hero-header p{
+  margin: 0;
+  padding: 2px;
+}
+
+div.upgrades-section{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  place-items: center;
+  grid-gap: 10px;
+}
+
+div.first-content ul{
+  padding-left: 20px;
+}
+
+div.first-content ul li{
+  padding-left: 10px;
+  padding-top: 20px;
+}
+
+
+.u{
+  width: 100%;
+  text-align: center;
+}
+
+.upgradeImg{
+  background-color: #dcf2f1;
+  padding: 10px;
+  border: 1px solid #365486;
+}
+
+#upgradeOneContent div.upgradeImg, #upgradeThreeContent div.upgradeImg{
+  padding-top: 28px;
+} 
+
+#upgradeFourContent div.upgradeImg{
+  padding-top: 24px;
+}
+
+  /* Inventory Display */
+#inv-display{
+  display: grid;
+  margin: 0 auto;
+  grid-template-columns: 1fr 1fr;
+}
+
+#inv-display li{
+  justify-self: center;
+  max-width: 200px;
+  border: 2px solid #365486;
+  max-height: 100%;
+  list-style: none;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+#inv-display li a{
+  margin: auto;
+}
+
+#inv-display li a img{
+  max-width: 100%;
+}
+#inv-display li div.namePrice{
+  display: inline-block; /* or inline if the content is short and you want it to stay on one line */
+  text-align: center;
+}
+
+
+#inv-display li div.namePrice h2{
+  margin: auto;
+  padding: 10px;
+  font-size: 1em;
+}
+
+#inv-display li div.namePrice span{
+  margin: auto;
+}
+
+#inv-display li div.namePrice hr{
+  border: 1px solid black;
+}
+
+/* Inventory Details */
+div#details-page{
+  background-color: #dcf2f1;
+  border-radius: 10px;
+}
+
+div#details-page div.details-images{
+  max-width: 500px;
+  margin: auto;
+  padding: 10px;
+}
+
+div#details-page div.details-images img{
+  max-width: 100%;
+  border: 1px solid black;
+  border-radius: 10px;
+  
+}
+
+div#details-page div.car-details{
+  max-width: 500px;
+  justify-content: center;
+  margin: auto;
+  padding: 10px;
+  background-color: #365486;
+  color: white;
+  border-radius: 10px;
+}
+
+#error-message, #error-message-header{
+  text-align: center;
+}
+
+.error-img{
+  max-width: 100%;
+}
+
+input:required:invalid, textarea:required:invalid{
+  background-color: rgb(235, 187, 187)
+}
+
+
+input[type=email], input[type=password], input[type=number],input[type=text], select#classification_id, textarea#inv_description {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+textarea#inv_description{
+  resize: none;
+  height: 200px;
+}
+
+button[type=submit], input[type=submit] {
+  width: 100%;
+  background-color: #365486;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button[type=submit]:hover, input[type=submit]:hover {
+  background-color: #ffffff;
+  color: #365486;
+  border: 1px solid #365486;
+}
+
+form, div.registration-link{
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  max-width: 500px;
+  margin: auto;
+}
+
+ul.notice{
+  list-style-type: none;
+  color: red;
+  font-style: italic;
+  font-weight: bold;
+}
+
+a#classification-button,a#inventory-button, a#edit-info-button, a#inv-management-button, a#approval-button, a#approval-button1{
+  text-decoration: none;
+  margin: 10px auto;
+  width: 50%;
+  display: block;
+}
+
+a#classification-button h2, a#inventory-button h2, a#edit-info-button h3, a#inv-management-button h3, a#approval-button h2, a#approval-button1 h2{
+  text-align: center;
+  background-color: #365486;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+a#classification-button h2:hover,a#inventory-button h2:hover, a#edit-info-button h3:hover,  a#inv-management-button h3:hover, a#approval-button h2:hover, a#approval-button1 h2:hover{
+  background-color: #ffffff;
+  color: #365486;
+  border: 1px solid #365486;
+}
+
+table#inventoryDisplay, table#unapprovedClassification, table#unapprovedInventory{
+  
+  margin: auto;
+}
+
+a#modify-button, a#delete-button, a#approved-button, a#reject-button, a#approved-button1, a#reject-button1{
+  text-decoration: none;
+  margin: 10px auto;
+  width: 100%;
+  display: block;
+  text-align: center;
+  background-color: #365486;
+  color: white;
+  padding: 5px 10px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+a#modify-button:hover, a#delete-button:hover, a#approved-button:hover, a#reject-button:hover, a#approved-button1:hover, a#reject-button1:hover{
+  background-color: #ffffff;
+  color: #365486;
+
+}
+
+tbody>tr{
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  max-width: 500px;
+  margin: auto;
+}
+
+td{
+  padding: 5px;
+}
+
+div.select-classification{
+  margin: 10px auto;
+    width: 50%;
+    display: block;
+}
+
+#unapprovedInventory > tbody > tr > td:nth-child(5), #unapprovedClassification > tbody > tr > td:nth-child(4)  {
+  background-color: white;
+}
+/* Footer */
