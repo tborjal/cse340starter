@@ -31,7 +31,7 @@
 }
 
 #acct-btn a:hover{
-  background-color: #365486;
+  background-color: black;
   color: #ffffff;
   padding: 2px;
 }
@@ -42,12 +42,12 @@
 
 .siteName a, #acct-btn a{
   text-decoration: none;
-  color: #365486;
+  color: black;
 }
 
 /* Navigation */
 nav{
-  background-color: #365486;
+  background-color: #1b7a26;
 }
 
 nav ul{
@@ -76,7 +76,7 @@ nav ul li a{
 
 nav ul li a:hover{
   background-color: white;
-  color: #365486;
+  color: #1b7a26;
 }
 
 
@@ -120,7 +120,7 @@ div.hero-btn{
 }
 
 div.hero-btn button{
-  background: #365486;
+  background: #1b7a26;
   color: whitesmoke;
   border-radius: 5px;
   font-size: 1em;
