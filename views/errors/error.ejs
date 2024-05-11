@@ -1,7 +1,8 @@
 <% if (title) { %>
     <h1><%= title %></h1>
+    <img class="error-img" src="https://media.istockphoto.com/id/1383517083/photo/man-calling-his-car-insurance-after-having-a-vehicle-breakdown-on-the-road.jpg?s=2048x2048&w=is&k=20&c=XFB1ioi_v5Jm4n_3niM1_kttJY4T0wEAz6FaGZKBALo=" alt="car down">
     <% } else {
       res.redirect('/')
     } %>
     
-<%- message %>
+    <h2><%- message %>

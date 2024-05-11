@@ -12,7 +12,7 @@ Util.getNav = async function (req, res, next) {
     list += "<li>"
     list +=
       '<a href="/inv/type/' +
-      row.classification_id +
+      row.classification_id + 
       '" title="See our inventory of ' +
       row.classification_name +
       ' vehicles">' +
@@ -21,7 +21,7 @@ Util.getNav = async function (req, res, next) {
     list += "</li>"
   })
   list += "</ul>"
-  return list
+  return list 
 }
 
 /* **************************************
@@ -55,6 +55,65 @@ Util.buildClassificationGrid = async function(data){
     grid += '<p class="notice">Sorry, no matching vehicles could be found.</p>'
   }
   return grid
+}
+
+/* **************************************
+* Build the details view HTML
+* ************************************ */
+
+Util.buildInventoryDetailsGrid = async function(data){
+
+  let grid
+  let vehicle = data[0]
+  if (vehicle){
+    grid = '<div id="details-page">'
+    grid += '<div class="details-images"> <img src="' + vehicle.inv_image
+    +'" alt="Image of '+ vehicle.inv_make + ' ' + vehicle.inv_model 
+    +' on CSE Motors"></div>'
+    grid += '<div class="car-details"><h2>' + vehicle.inv_make + ' ' + vehicle.inv_model + ' Details</h2>'
+    grid += '<p> <strong> Price: $</strong>' + new Intl.NumberFormat('en-US').format(vehicle.inv_price)+'</p>'
+    grid += '<p><strong> Description: </strong>' + vehicle.inv_description + '</p>'
+    grid += '<p><strong> Color: </strong>' + vehicle.inv_color + '</p>'
+    grid += '<p><strong> Miles: </strong>' + vehicle.inv_miles.toLocaleString('en-US') + '</p></div>'
+    grid += '</div>'
+  }else{
+    grid += '<p class="notice">Sorry, no matching vehicles could be found.</p>'
+  }
+  return grid
+}
+
+
+Util.selectAllClassification = async function (selectedClassificationId) {
+  console.log("Select All Classification")
+  let data = await invModel.getAllClassifications();
+  let select = '<label for="classification_id">Select Classification: </label><br>';
+  select += '<select id="classification_id" name="classification_id">';
+  data.rows.forEach((row) => {
+    select += '<option value="' + row.classification_id + '"';
+    if (row.classification_id == selectedClassificationId) {
+      select += ' selected';
+    }
+    select += '>' + row.classification_name + '</option>';
+  });
+  select += '</select>';
+  return select;
+}
+
+
+
+Util.selectClassification = async function (selectedClassificationId) {
+  let data = await invModel.getClassifications();
+  let select = '<label for="classification_id">Select Classification: </label><br>';
+  select += '<select id="classification_id" name="classification_id">';
+  data.rows.forEach((row) => {
+    select += '<option value="' + row.classification_id + '"';
+    if (row.classification_id == selectedClassificationId) {
+      select += ' selected';
+    }
+    select += '>' + row.classification_name + '</option>';
+  });
+  select += '</select>';
+  return select;
 }
 
 /* ****************************************

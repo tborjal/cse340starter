@@ -178,7 +178,7 @@ div.first-content ul li{
 #inv-display li{
   justify-self: center;
   max-width: 200px;
-  border: 2px solid #365486;
+  border: 2px solid black;
   max-height: 100%;
   list-style: none;
   display: grid;
@@ -216,7 +216,7 @@ div.first-content ul li{
 
 /* Inventory Details */
 div#details-page{
-  background-color: #dcf2f1;
+  background-color: #d6dede;
   border-radius: 10px;
 }
 
@@ -238,8 +238,8 @@ div#details-page div.car-details{
   justify-content: center;
   margin: auto;
   padding: 10px;
-  background-color: #365486;
-  color: white;
+  background-color: #d6f6d1;
+  color: black;
   border-radius: 10px;
 }
 
