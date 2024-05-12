@@ -31,7 +31,7 @@ module.exports = {
 }
 } else {
   pool = new Pool({
-    connectionString: process.env.DATABASE_URL_INTERNAL,
+    connectionString: process.env.DATABASE_URL_INTERNAL, // Changed to Internal
   })
   module.exports = pool
 }
