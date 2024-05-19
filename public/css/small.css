@@ -252,7 +252,7 @@ div#details-page div.car-details{
 }
 
 input:required:invalid, textarea:required:invalid{
-  background-color: rgb(235, 187, 187)
+  background-color: rgb(211, 165, 165)
 }
 
 
@@ -273,7 +273,7 @@ textarea#inv_description{
 
 button[type=submit], input[type=submit] {
   width: 100%;
-  background-color: #365486;
+  background-color: #02790a;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -284,8 +284,8 @@ button[type=submit], input[type=submit] {
 
 button[type=submit]:hover, input[type=submit]:hover {
   background-color: #ffffff;
-  color: #365486;
-  border: 1px solid #365486;
+  color: #000000;
+  border: 1px solid #000000;
 }
 
 form, div.registration-link{
@@ -302,6 +302,12 @@ ul.notice{
   font-style: italic;
   font-weight: bold;
 }
+ul.notice-green{
+  list-style-type: none;
+  color: rgb(4, 132, 36);
+  font-style: italic;
+  font-weight: bold;
+}
 
 a#classification-button,a#inventory-button, a#edit-info-button, a#inv-management-button, a#approval-button, a#approval-button1{
   text-decoration: none;
@@ -312,7 +318,7 @@ a#classification-button,a#inventory-button, a#edit-info-button, a#inv-management
 
 a#classification-button h2, a#inventory-button h2, a#edit-info-button h3, a#inv-management-button h3, a#approval-button h2, a#approval-button1 h2{
   text-align: center;
-  background-color: #365486;
+  background-color: #026d09;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -323,8 +329,8 @@ a#classification-button h2, a#inventory-button h2, a#edit-info-button h3, a#inv-
 
 a#classification-button h2:hover,a#inventory-button h2:hover, a#edit-info-button h3:hover,  a#inv-management-button h3:hover, a#approval-button h2:hover, a#approval-button1 h2:hover{
   background-color: #ffffff;
-  color: #365486;
-  border: 1px solid #365486;
+  color: #000000;
+  border: 1px solid #000000;
 }
 
 table#inventoryDisplay, table#unapprovedClassification, table#unapprovedInventory{
@@ -338,7 +344,7 @@ a#modify-button, a#delete-button, a#approved-button, a#reject-button, a#approved
   width: 100%;
   display: block;
   text-align: center;
-  background-color: #365486;
+  background-color: #000000;
   color: white;
   padding: 5px 10px;
   margin: 8px 0;
@@ -349,7 +355,7 @@ a#modify-button, a#delete-button, a#approved-button, a#reject-button, a#approved
 
 a#modify-button:hover, a#delete-button:hover, a#approved-button:hover, a#reject-button:hover, a#approved-button1:hover, a#reject-button1:hover{
   background-color: #ffffff;
-  color: #365486;
+  color: #000000;
 
 }
 
