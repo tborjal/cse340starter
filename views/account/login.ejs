@@ -1,10 +1,11 @@
 <div class="container">
     <h2>Login</h2>
     <%- messages() %>
+
     <form id="loginForm "action="/account/login" method="post">
         <div class="form-group">
             <label for="email">Email:</label>
-            <input type="email" id="email" name="account_email" require placeholder="Enter a valid email address">
+            <input type="email" id="email" name="account_email" required placeholder="Enter a valid email address">
         </div>
         <div class="form-group">
             <label for="password">Password:</label>
@@ -13,6 +14,6 @@
         <div class="form-group">
             <input type="submit" value="Login">
         </div>
-   <p>No Account? <a href = "/account/register" ><u>Sign-up</u></a></p>
+   <p>No Account? <a href ="/account/register" ><u>Sign-up</u></a></p>
     </form>
 </div>
