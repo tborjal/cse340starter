@@ -23,6 +23,13 @@
                 <h2>Add New Vehicle</h2>
             </a>
 
+            <% if(locals.accountData.account_type==="Admin" ) { %>
+                <a id="approval-button" href="/inv/unapproved">
+                    <h2>Manage Added Classification/Vehicles</h2>
+                </a>
+
+                <% } %>
+
             <h2>Manage Inventory</h2>
                     <div class="select-classification">
                         <%- classification %>

@@ -1,0 +1,28 @@
+<h1>
+    <%= title %>
+</h1>
+
+<%- messages() %>
+
+    <% if (errors) { %>
+        <ul class="notice">
+            <% errors.array().forEach(error=> { %>
+                <li>
+                    <%= error.msg %>
+                </li>
+                <% }) %>
+        </ul>
+        <% } %>
+
+            <h2>Approve Classification</h2>
+            <table id="unapprovedClassification">
+                <%- unapprovedClass %>
+            </table>
+
+            <h2>Approve Inventory</h2>
+            <div class="select-classification">
+            </div>
+            <table id="unapprovedInventory">
+                <%- unapprovedInv %>
+            </table>
+

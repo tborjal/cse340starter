@@ -1,0 +1,61 @@
+<!--  -->
+<h1>
+    <%= title %>
+</h1>
+
+<%- messages() %>
+
+    <% if (errors) { %>
+        <ul class="notice">
+            <% errors.array().forEach(error=> { %>
+                <li>
+                    <%= error.msg %>
+                </li>
+                <% }) %>
+        </ul>
+        <% } %>
+
+            <form action="/inv/approvedInv" method="post">
+
+                <label for="classification_name">Classification:</label>
+                <input readOnly type="text" id="classification_name" name="classification_name" required
+                    pattern="[^' ']+[a-zA-Z]" value="<%= invData.classification_name %>">
+
+                <label for="inv_make">Make:</label>
+                <input readOnly type="text" id="inv_make" name="inv_make" required pattern="[^' ']+[a-zA-Z]"
+                    value="<%= invData.inv_make %>">
+
+                <label for="inv_model">Model:</label>
+                <input readOnly type="text" id="inv_model" name="inv_model" required value="<%= invData.inv_model %>">
+
+                <label for="inv_year">Year:</label>
+                <input readOnly type="number" id="inv_year" name="inv_year" required value="<%= invData.inv_year %>"
+                    placeholder="2024">
+
+                <label for="inv_description">Description:</label>
+                <textarea readOnly id="inv_description" name="inv_description"
+                    required><%= invData.inv_description || '' %></textarea>
+
+                <label for="inv_price">Price:</label>
+                <input readOnly type="number" id="inv_price" name="inv_price" required value="<%= invData.inv_price %>"
+                    placeholder="0000">
+
+                <label for="inv_miles">Miles:</label>
+                <input readOnly type="number" id="inv_miles" name="inv_miles" required value="<%= invData.inv_miles %>"
+                    placeholder="0000">
+
+                <label for="inv_color">Color:</label>
+                <input readOnly type="text" id="inv_color" name="inv_color" required value="<%= invData.inv_color %>">
+
+                <label for="inv_image">Image Path</label>
+                <input type="text" id="inv_image" name="inv_image" required readOnly
+                    value="<%= invData.inv_image ? invData.inv_image : '/images/vehicles/no-image.png' %>">
+
+                <label for="inv_thumbnail">Image Thumbnail</label>
+                <input type="text" id="inv_thumbnail" name="inv_thumbnail" required readOnly
+                    value="<%= invData.inv_thumbnail ? invData.inv_thumbnail : '/images/vehicles/no-image-tn.png' %>">
+
+                <input type="submit" value="Approved Vehicle">
+
+                <input type="hidden" name="inv_id" value="<%= invData.inv_id %>">
+            </form>

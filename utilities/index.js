@@ -3,6 +3,8 @@ require("dotenv").config()
 const invModel = require("../models/inventory-model")
 const Util = {}
 
+
+
 /* ************************
  * Constructs the nav HTML unordered list
  ************************** */
@@ -194,5 +196,54 @@ Util.checkAccountType =(isLoggedIn, accountType) => {
   }
   return managementGrid
 }
+
+Util.buildUnapprovedClassificationList = async function(data) { 
+  if (!data || !Array.isArray(data)) {
+    console.error("Invalid data passed to Util.buildUnapprovedClassificationList: ", data);
+    return "";
+  }
+  // Set up the table labels 
+  let dataTable = '<thead>'; 
+  dataTable += '<tr><th>Classification Name</th><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>'; 
+  dataTable += '</thead>'; 
+  // Set up the table body 
+  dataTable += '<tbody>'; 
+  // Iterate over all vehicles in the array and put each in a row 
+  data.forEach(function (element) { 
+    dataTable += `<tr><td>${element.classification_name}</td>`; 
+    dataTable += `<td><a id="approved-button" href='/inv/approved/${element.classification_id}' title='Click to Approve'>Approve</a></td>`; 
+    dataTable += `<td><a id="reject-button" href='/inv/deleteClass/${element.classification_id}' title='Click to Reject'>Reject</a></td>`; 
+    dataTable += `<td><input type="hidden" name="classification_id" value="${element.classification_id}"></td></tr>`
+  }) 
+  dataTable += '</tbody>'; 
+  // Display the contents in the Inventory Management view 
+  return dataTable;
+}
+
+
+  // Build inventory items into HTML table components and inject into DOM 
+Util.buildUnapprovedInventoryList = async function(data) { 
+ if (!data || !Array.isArray(data)) {
+    console.error("Invalid data passed to Util.buildUnapprovedInventoryList: ", data);
+    return "";
+  }
+  // Set up the table labels 
+  let dataTable = '<thead>'; 
+  dataTable += '<tr><th>Classification Name</th><th>Vehicle Name</th><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>'; 
+  dataTable += '</thead>'; 
+  // Set up the table body 
+  dataTable += '<tbody>'; 
+  // Iterate over all vehicles in the array and put each in a row 
+  data.forEach(function (element) { 
+   dataTable += `<tr><td>${element.classification_name}</td>`
+   dataTable += `<td>${element.inv_make} ${element.inv_model}</td>`; 
+   dataTable += `<td><a id="approved-button1" href='/inv/approvedInv/${element.inv_id}' title='Click to Approved'>Approved</a></td>`; 
+   dataTable += `<td><a id="reject-button1" href='/inv/delete/${element.inv_id}' title='Click to Reject'>Reject</a></td>`; 
+   dataTable += `<td><input type="hidden" name="classification_id" value="${element.classification_id}"></td></tr>`
+  }) 
+  dataTable += '</tbody>'; 
+  // Display the contents in the Inventory Management view 
+  return dataTable; 
+ }
 
 module.exports = Util

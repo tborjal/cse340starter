@@ -280,6 +280,106 @@ invCont.deleteInventory = async function(req, res){
   }
 }
 
+invCont.buildUnapprovedView = async function(req, res) {
+  try {
+    let nav = await utilities.getNav()
+    const unapprovedClassifications = await invModel.getUnapprovedClassifications();
+    const unapprovedInventory = await invModel.getUnapprovedInventory();
+    const unapprovedClass = await utilities.buildUnapprovedClassificationList(unapprovedClassifications);
+    const unapprovedInv = await utilities.buildUnapprovedInventoryList(unapprovedInventory);
+    // Render a page showing unapproved classifications and inventory items
+    res.render("./inventory/unapproved", {
+      title: "Approval Management ",
+      nav,
+      unapprovedClass,
+      unapprovedInv,
+      errors: null,
+      
+    })
+  } catch (error) {
+    console.error("Error building unapproved view: ", error);
+    res.render('error', { error });
+  }
+}
+
+invCont.buildClassificationApprovedView = async function(req, res){
+  const classification_id = parseInt(req.params.classification_id);
+  let nav = await utilities.getNav()
+  const classificationData = await invModel.getDetailsByClassificationId(classification_id)
+  res.render("./inventory/approved-classification", {
+    title: "Approved Classification",
+    nav,
+    classificationName: classificationData[0].classification_name,
+    classificationId: classificationData[0].classification_id,
+    errors: null,
+  })
+}
+
+invCont.approvedClassification = async function(req, res){
+  const classification_id = req.body.classification_id;
+  
+  const account_id = res.locals.accountData.account_id;
+  const updateResult = await invModel.approvedClassification(account_id, classification_id);
+  if (updateResult) {
+    req.flash("notice", `The classification was approved`);
+    res.redirect("/inv/unapproved");
+  } else {
+    req.flash("notice", "Sorry, the approval failed.");
+    res.redirect("/inv/unapproved");
+  }
+}
+
+invCont.buildDeleteClassificationView = async function(req, res){
+  const classification_id = parseInt(req.params.classification_id);
+  let nav = await utilities.getNav()
+  const classificationData = await invModel.getDetailsByClassificationId(classification_id)
+  res.render("./inventory/delete-classification", {
+    title: "Reject Classification",
+    nav,
+    classificationName: classificationData[0].classification_name,
+    classificationId: classificationData[0].classification_id,
+    errors: null,
+  })
+}
+
+invCont.rejectClassification = async function(req, res){
+  const classification_id = req.body.classification_id;
+  const updateResult = await invModel.deleteClassification(classification_id);
+  if (updateResult) {
+    req.flash("notice", `The classification was rejected`);
+    res.redirect("/inv/unapproved");
+  } else {
+    req.flash("notice", "Sorry, the rejected failed.");
+    res.redirect("/inv/unapproved");
+  }
+}
+
+invCont.buildInventoryApprovedView = async function(req, res){
+  const inv_id = parseInt(req.params.inv_id);
+  let nav = await utilities.getNav()
+  const invData = await invModel.getUnapprovedInventoryById(inv_id)
+  res.render("./inventory/approved-inventory", {
+    title: "Approved Inventory",
+    nav,
+    invData,
+    errors: null,
+  })
+}
+
+invCont.approvedInventory = async function(req, res){
+  const inv_id = req.body.inv_id;
+  console.log(inv_id)
+  const account_id = res.locals.accountData.account_id;
+  const updateResult = await invModel.approvedInventory(account_id, inv_id);
+  if (updateResult) {
+    req.flash("notice", `The vehicle was approved`);
+    res.redirect("/inv/unapproved");
+  } else {
+    req.flash("notice", "Sorry, the approval failed.");
+    res.redirect("/inv/unapproved");
+  }
+}
+
 
 
 module.exports = invCont

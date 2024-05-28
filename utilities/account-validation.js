@@ -142,7 +142,7 @@ validate.checkRegData = async (req, res, next) => {
       .custom(async (account_email) => {
         const emailExists = await accountModel.checkExistingEmail(account_email)
         if (!emailExists){
-          throw new Error("Email doesn't exists. Please log in using your own email")
+          throw new Error("Email doesn't exist. Please log in using your own email")
         }
       }),
   

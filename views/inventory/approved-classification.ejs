@@ -1,0 +1,24 @@
+<h1>
+    <%= title %>
+</h1>
+
+<%- messages() %>
+
+    <% if (errors) { %>
+        <ul class="notice">
+            <% errors.array().forEach(error=> { %>
+                <li>
+                    <%= error.msg %>
+                </li>
+                <% }) %>
+        </ul>
+        <% } %>
+
+            <form action="/inv/approvedClassification" method="post">
+                <label for="classification_name">Classification Name:</label>
+                <input type="text" id="classification_name" name="classification_name" readonly
+                    value="<%= classificationName  %>" required pattern="[a-zA-Z]+">
+                <br>
+                <input type="submit" value="Approved Classification">
+                <input type="hidden" name="classification_id" value="<%= classificationId %>">
+            </form>

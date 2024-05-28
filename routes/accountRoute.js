@@ -3,6 +3,7 @@
 * Unit 4, deliver login view activity
 * ********************************* */
 // Needed Resources
+
 const express = require("express")
 const router = new express.Router()
 const accountController = require("../controllers/accountController")
@@ -21,15 +22,13 @@ router.get("/register", utilities.handleErrors(accountController.buildRegister))
 
 // Process the registration data
 
-router.post(
-  "/register",
+router.post("/register",
   regValidate.registrationRules(),
   regValidate.checkRegData,
   utilities.handleErrors(accountController.registerAccount)
 )
 // Process the login attempt Black
-router.post(
-    "/login",
+router.post("/login",
     regValidate.loginRules(),
     regValidate.checkLoginData,
     utilities.handleErrors(accountController.accountLogin)
